@@ -2,24 +2,44 @@ pipeline {
     agent any
 
     stages {
-        stage('Klonlama') {
+        stage('Clone Repository') {
             steps {
                 git 'https://github.com/ozgenur19/Game2048.git'
             }
         }
-        
-        stage('Derleme') {
+
+        stage('Build') {
             steps {
-                // JavaFX projesini derlemek için gerekli komutlar
-                sh 'javac -d out src/*.java'
+                sh 'echo "Building the project..."'
+               
+                sh 'mvn clean install' 
+                
+                
             }
         }
-        
+
         stage('Test') {
             steps {
-                // Test aşaması
-                sh 'java -cp out Game2048'
+                sh 'echo "Running tests..."'
+                sh 'mvn test' 
+            
             }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying application..."'
+                
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
