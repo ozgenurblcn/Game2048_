@@ -11,21 +11,21 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'echo "Building the project..."'
-                bat 'gradlew build'
+                bat 'gradlew.bat build' // gradlew yerine gradlew.bat kullanın
             }
         }
 
         stage('Test') {
             steps {
                 bat 'echo "Running tests..."'
-                bat 'gradlew test'
+                bat 'gradlew.bat test' // gradlew yerine gradlew.bat kullanın
             }
         }
 
         stage('Deploy') {
             steps {
                 bat 'echo "Deploying application..."'
-                bat 'deploy.bat'
+                // Deploy komutlarını ekleyin
             }
         }
     }
