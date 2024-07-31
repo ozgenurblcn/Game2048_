@@ -10,22 +10,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'echo "Building the project..."'
-                // Build komutlarını ekleyin
+                bat 'echo "Building the project..."'
+                bat 'gradlew build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "Running tests..."'
-                // Test komutlarını ekleyin
+                bat 'echo "Running tests..."'
+                bat 'gradlew test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying application..."'
-                // Deploy komutlarını ekleyin
+                bat 'echo "Deploying application..."'
+                bat 'deploy.bat'
             }
         }
     }
