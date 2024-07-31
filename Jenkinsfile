@@ -2,34 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/ozgenur19/Game2048.git'
+                git branch: 'main', url: 'https://github.com/ozgenur19/Game2048.git'
             }
         }
 
         stage('Build') {
             steps {
                 sh 'echo "Building the project..."'
-               
-                sh 'mvn clean install' 
-                
-                
+                // Build komutlarını ekleyin
             }
         }
 
         stage('Test') {
             steps {
                 sh 'echo "Running tests..."'
-                sh 'mvn test' 
-            
+                // Test komutlarını ekleyin
             }
         }
 
         stage('Deploy') {
             steps {
                 sh 'echo "Deploying application..."'
-                
+                // Deploy komutlarını ekleyin
             }
         }
     }
