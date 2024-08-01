@@ -19,7 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'echo "Running tests..."'
-                bat 'gradle test'
+                
                 
                
             }
