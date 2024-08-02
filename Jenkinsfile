@@ -26,10 +26,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-             
-            echo 'Building Docker image...'
+          script {
+                    echo 'Building Docker image...'
                     docker.build('my-app-image')
-                
+                }
             }
         }
     }
