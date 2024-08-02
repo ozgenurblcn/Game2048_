@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Game2048 extends Application {
   
-  private int size = 4; // Boyutu belirleyebilirsiniz (4x4 gibi)
+  private int size = 4; 
   
   private int[][] board;
   private Button[][] buttons;
@@ -22,7 +22,6 @@ public class Game2048 extends Application {
     gridPane.setHgap(10);
     gridPane.setVgap(10);
     
-    // Butonlarý oluþturma ve grid'e ekleme
     for (int i = 0; i < size; i++) {
       for (int j = 0; j < size; j++) {
         Button button = new Button();
