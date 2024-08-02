@@ -10,7 +10,8 @@ pipeline {
 
         stage('Build') {
             steps {
-               bat 'echo "Running build..."'
+               bat 'docker build -t myjenkins-blueocean:2.452.3-1'
+
                
             }
         }
@@ -27,8 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
           script {
-                    echo 'Building Docker image...'
-                    docker.build('my-app-image')
+                bat 'echo "Running deployed..."'
                 }
             }
         }
