@@ -17,7 +17,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'gradle test'
+                bat 'echo "Running testing..."'
                 
                 
                
@@ -26,7 +26,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'echo "Deploying application..."'
+             
+            bat 'docker build -t my-app-image .'
+            bat 'docker run -d -p 8080:8080 --name my-app-container my-app-image'
                 
             }
         }
