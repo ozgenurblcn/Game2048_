@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environment {         PATH = "C:\Program Files\Jenkins\gradle-8.9\bin;$PATH" 
+    environment {         PATH = "C:\\Program Files\\Jenkins\\gradle-8.9\\bin;$PATH" 
                 }
 
     stages {
