@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build') {
             steps {
-               bat 'docker build -t myjenkins-blueocean:2.452.3-1'
+               bat 'echo "Running build..."'
 
                
             }
