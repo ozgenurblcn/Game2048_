@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    environment {         PATH = "C:\Program Files\Jenkins\gradle-8.9\bin;$PATH" 
+                }
 
     stages {
         stage('Checkout') {
@@ -18,7 +20,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'echo "Running testing..."'
+               bat 'gradle build.'
                 
                 
                
