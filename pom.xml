@@ -39,6 +39,9 @@
                    <artifactId>maven-surefire-plugin</artifactId>
             <version>2.22.2</version>
                 <configuration>
+                          <includes>
+                    <include>**/Game2048Test.java</include>
+                </includes>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
