@@ -33,21 +33,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy') {
-            steps {
-                script {
-                    bat 'echo "Running deployment..."'
-                    withCredentials([usernamePassword(credentialsId: 'docker_token', passwordVariable: 'Ozgenur.0519', usernameVariable: 'ozgenur19')]) {
-                        bat 'docker login -u ozgenur19 -p Ozgenur.0519'
-                        bat 'docker tag java_app ozgenur19/java_app:latest'
-                        bat 'docker push ozgenur19/java_app:latest'
-                        bat 'docker logout'
-                    }
-                }
-            }
-        }
-        stage('Clean Up') {
+                stage('Clean Up') {
     steps {
         script {
             bat 'docker rm -f java_app_container || true'  // Mevcut container'ı sil
@@ -63,6 +49,21 @@ pipeline {
             }
            }
     }
+
+
+        stage('Deploy') {
+            steps {
+                script {
+                    bat 'echo "Running deployment..."'
+                    withCredentials([usernamePassword(credentialsId: 'docker_token', passwordVariable: 'Ozgenur.0519', usernameVariable: 'ozgenur19')]) {
+                        bat 'docker login -u ozgenur19 -p Ozgenur.0519'
+                        bat 'docker tag java_app ozgenur19/java_app:latest'
+                        bat 'docker push ozgenur19/java_app:latest'
+                        bat 'docker logout'
+                    }
+                }
+            }
+        }
 
     post {
         success {
