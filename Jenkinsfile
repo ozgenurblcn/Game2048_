@@ -1,7 +1,9 @@
+
 pipeline {
     agent any
-    environment {         PATH = "C:\\Program Files\\Jenkins\\gradle-8.9\\bin;$PATH" 
-                }
+    environment { 
+        PATH = "C:\\Program Files\\Jenkins\\maven-3.8.6\\bin;$PATH" 
+    }
 
     stages {
         stage('Checkout') {
@@ -12,25 +14,22 @@ pipeline {
 
         stage('Build') {
             steps {
-               bat 'echo "Running build..."'
-
-               
+                bat 'echo "Running build..."'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
-               bat 'gradle -v'
-                
-                
-               
+                bat 'mvn test'
             }
         }
 
         stage('Deploy') {
             steps {
-          script {
-                bat 'echo "Running deployed..."'
+                script {
+                    bat 'echo "Running deployment..."'
+                    // Add your deployment commands here
                 }
             }
         }
@@ -45,3 +44,4 @@ pipeline {
         }
     }
 }
+
