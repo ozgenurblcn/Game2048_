@@ -48,7 +48,6 @@ pipeline {
                 }
             }
            }
-    }
 
 
         stage('Deploy') {
@@ -64,6 +63,7 @@ pipeline {
                 }
             }
         }
+}
 
     post {
         success {
