@@ -29,7 +29,12 @@ pipeline {
             steps {
                 script {
                     bat 'echo "Running deployment..."'
-                    // Add your deployment commands here
+                     withCredentials([usernamePassword(credentialsId: 'docker_token', passwordVariable: 'Ozgenur.0519', usernameVariable: 'ozgenur19')]) {
+                    bat 'docker login -u ozgenur19 -p Ozgenur.0519'
+                    bat 'docker tag java_app ozgenur19/java_app:latest'
+                    bat 'docker push ozgenur19/java_app:latest'
+                    bat 'docker logout'
+                }
                 }
             }
         }
