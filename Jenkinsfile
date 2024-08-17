@@ -58,7 +58,7 @@ pipeline {
             steps {
                 script {
                     bat 'echo "Running Docker container..."'
-                    bat 'docker run -d --name java_app_container -p 8080:8080 java_app'
+                    bat 'docker run -d --name java_app_container -p 8081:8080 java_app'
                 }
             }
            }
