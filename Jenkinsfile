@@ -10,52 +10,33 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/ozgenur19/Game2048.git'
             }
         }
-         stage('Install Dependencies') {
-            steps {
-                bat 'npm install'
-               
-            }
-        }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
                 bat 'mvn clean install'
             }
         }
-          stage('Docker Build') {
+
+        stage('Docker Build') {
             steps {
                 script {
-                    bat 'java_app build.'
-                   // bat 'docker run -d --name java_app_container -p 8081:8081 java_app'
+                    bat 'docker build -t java_app .'
                 }
             }
         }
 
-        stage('Test') {
-            steps {
-                bat 'echo "Running tests..."'
-                bat 'mvn test'
-                 bat 'java_app run --rm Game2048 npm test'
-            }
-        }
-
-      
-
-        /*stage('Clean Up') {
+        stage('Run Docker Container') {
             steps {
                 script {
-                    bat 'echo "Cleaning up old Docker containers..."'
                     bat 'docker rm -f java_app_container || true'
+                    bat 'docker run -d --name java_app_container -p 8081:8080 java_app'
                 }
             }
-        }*/
+        }
 
-       
         stage('Deploy') {
             steps {
                 script {
-                    bat 'echo "Running deployment..."'
                     withCredentials([usernamePassword(credentialsId: 'docker_token', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
                         bat 'docker tag java_app ozgenur19/java_app:latest'
@@ -76,7 +57,6 @@ pipeline {
         }
     }
 }
-
 
 
 /*pipeline {
