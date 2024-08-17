@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment { 
-        PATH = "C:\\Program Files\\Jenkins\\maven-3.8.6\\bin;$PATH" 
+        PATH = "C:\Program Files\apache-maven-3.9.8\\bin;$PATH" 
     }
 
     stages {
