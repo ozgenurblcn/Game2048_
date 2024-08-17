@@ -50,7 +50,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Game2048</mainClass> <!-- Main class'ınızı buraya yazın -->
+                                <archive>
+                    <manifestEntries>
+                        <Main-Class>Game2048</Main-Class> <!-- Ana sınıfınızı buraya yazın -->
+                    </manifestEntries>
+                </archive>
                 </configuration>
             </plugin>
         </plugins>
