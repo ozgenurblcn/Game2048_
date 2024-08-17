@@ -30,6 +30,7 @@ pipeline {
                 script {
                     bat 'echo "Building Docker image..."'
                     bat 'docker build -t java_app .'
+                    bat 'docker run -d --name java_app_container -p 8081:8080 java_app'
                 }
             }
         }
@@ -43,15 +44,7 @@ pipeline {
             }
         }*/
 
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    bat 'echo "Running Docker container..."'
-                    bat 'docker run -d --name java_app_container -p 8081:8080 java_app'
-                }
-            }
-        }
-
+       
         stage('Deploy') {
             steps {
                 script {
