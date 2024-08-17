@@ -1,0 +1,15 @@
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class Game2048Test {
+
+    @Test
+    public void testMoveUp() {
+        Game2048 game = new Game2048();
+        game.startGame();  // Start or reset the game state
+        game.moveUp();     // Call the method we want to test
+
+        // Assert some expected conditions after the move
+        assertEquals("Some expected value", game.getBoardValue(0, 0)); 
+    }
+}
