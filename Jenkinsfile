@@ -34,14 +34,14 @@ pipeline {
             }
         }
 
-        stage('Clean Up') {
+        /*stage('Clean Up') {
             steps {
                 script {
                     bat 'echo "Cleaning up old Docker containers..."'
                     bat 'docker rm -f java_app_container || true'
                 }
             }
-        }
+        }*/
 
         stage('Run Docker Container') {
             steps {
