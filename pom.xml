@@ -52,7 +52,7 @@
                 <configuration>
                                 <archive>
                     <manifestEntries>
-                        <Main-Class>Game2048</Main-Class> <!-- Ana sınıfınızı buraya yazın -->
+                        <Main-Class>com.example.Game2048</Main-Class> <!-- Ana sınıfınızı buraya yazın -->
                     </manifestEntries>
                 </archive>
                 </configuration>
