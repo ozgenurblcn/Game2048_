@@ -47,6 +47,13 @@ pipeline {
                 }
             }
         }
+        stage('Clean Up') {
+    steps {
+        script {
+            bat 'docker rm -f java_app_container || true'  // Mevcut container'ı sil
+        }
+    }
+}
            stage('Run Docker Container') {
             steps {
                 script {
