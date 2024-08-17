@@ -33,6 +33,12 @@ pipeline {
                 }
             }
         }
+           stage('Test') {
+            steps {
+                bat 'echo "Running tests..."'
+                bat 'mvn test'
+            }
+        }
 
         stage('Deploy') {
             steps {
